@@ -24,7 +24,7 @@ jobs:
             -- -DSHIELD=analog_stick_test \
                -DZMK_EXTRA_MODULES=../modules/zmk-analog-input-driver
       - name: Upload firmware
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: firmware
           path: build/zephyr/zmk.uf2
