@@ -1,0 +1,32 @@
+/ {
+    analog_stick {
+        compatible = "zmk,analog-stick";
+        x-input = <&anin0>;
+        y-input = <&anin1>;
+        report-interval-ms = <10>;
+        x-speed-cps = <100>;
+        y-speed-cps = <100>;
+    };
+
+    anin0: analog_input_0 {
+        compatible = "zmk,analog-input";
+        sampling-hz = <100>;
+        x-ch {
+            io-channels = <&adc 2>;  // P0.04 (AIN2)
+            mv-mid = <1630>;
+            mv-min-max = <1600>;
+            mv-deadzone = <10>;
+        };
+    };
+
+    anin1: analog_input_1 {
+        compatible = "zmk,analog-input";
+        sampling-hz = <100>;
+        y-ch {
+            io-channels = <&adc 3>;  // P0.05 (AIN3)
+            mv-mid = <1630>;
+            mv-min-max = <1600>;
+            mv-deadzone = <10>;
+        };
+    };
+};
