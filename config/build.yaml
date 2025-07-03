@@ -1,0 +1,11 @@
+git clone https://github.com/YOUR_USERNAME/zmk-analog-stick-firmware.git
+cd zmk-analog-stick-firmware
+
+mkdir -p config/boards/shields
+mkdir -p .github/workflows
+
+# 上記ファイル群をこの中に保存（west.yml, 各dts, overlay, conf, build.yml）
+
+git add .
+git commit -m "Initial commit: analog stick only firmware for ZMK"
+git push origin main
