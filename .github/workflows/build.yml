@@ -14,7 +14,7 @@ jobs:
 
       - name: Initialize west
         run: |
-          west init -l config
+          west init -l .
           west update
           west zephyr-export
 
