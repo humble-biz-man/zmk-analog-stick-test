@@ -2,7 +2,8 @@
     keymap {
         compatible = "zmk,keymap";
         default_layer {
-            bindings = <&analog_stick>;
+            bindings = <&analog_input_0>;
         };
     };
 };
+.....

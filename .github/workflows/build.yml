@@ -1,5 +1,30 @@
-on: [push, pull_request, workflow_dispatch]
+name: Build ZMK Analog Stick Firmware
+
+on:
+  workflow_dispatch:
 
 jobs:
   build:
-    uses: zmkfirmware/zmk/.github/workflows/build-user-config.yml@main
+    runs-on: ubuntu-latest
+    container:
+      image: zmkfirmware/zmk-dev-arm:3.5
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Initialize west
+        run: |
+          west init -l .
+          west update
+          west zephyr-export
+
+      - name: Build firmware
+        run: |
+          west build -s zmk/app -b seeeduino_xiao_ble \
+            -- -DSHIELD=analog_stick_test \
+               -DZMK_EXTRA_MODULES=../modules/zmk-analog-input-driver
+      - name: Upload firmware
+        uses: actions/upload-artifact@v4
+        with:
+          name: firmware
+          path: build/zephyr/zmk.uf2
