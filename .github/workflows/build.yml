@@ -12,16 +12,25 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v3
 
+      - name: Clean up build dir if exists
+        run: |
+          rm -rf build
+
       - name: Initialize west
         run: |
           west init -l config
           west update
           west zephyr-export
 
+      - name: List shield folders for debug
+        run: |
+          find config/boards/shields -type f
+
       - name: Build firmware
         run: |
           west build -s zmk/app -b seeeduino_xiao_ble \
             -- -DSHIELD=analog_stick_test \
+            
       - name: Upload firmware
         uses: actions/upload-artifact@v4
         with:
