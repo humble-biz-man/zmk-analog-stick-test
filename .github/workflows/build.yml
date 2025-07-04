@@ -22,7 +22,6 @@ jobs:
         run: |
           west build -s zmk/app -b seeeduino_xiao_ble \
             -- -DSHIELD=analog_stick_test \
-               -DZMK_EXTRA_MODULES=../modules/zmk-analog-input-driver
       - name: Upload firmware
         uses: actions/upload-artifact@v4
         with:
