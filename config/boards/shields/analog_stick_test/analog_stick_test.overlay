@@ -4,15 +4,6 @@
 };
 
 / {
-    analog_stick {
-        compatible = "zmk,analog-stick";
-        x-input = <&anin0>;
-        y-input = <&anin0>;
-        report-interval-ms = <10>;
-        x-speed-cps = <100>;
-        y-speed-cps = <100>;
-    };
-
     anin0: analog_input_0 {
         compatible = "zmk,analog-input";
         sampling-hz = <100>;
@@ -40,4 +31,4 @@
             report-on-change-only;
         };
     };
-};
+}; 

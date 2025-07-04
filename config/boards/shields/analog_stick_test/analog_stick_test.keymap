@@ -5,5 +5,4 @@
             bindings = <&analog_input_0>;
         };
     };
-};
-.....
+}; 
